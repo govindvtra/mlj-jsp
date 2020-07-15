@@ -11,12 +11,17 @@ plugins {
     id 'java-library'
     id 'war'
 }
-
+def buildNumber = System.getenv("BUILD_BUILDID") as Integer ?: 1
 repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
     mavenCentral()
+}
+
+war {
+    baseName = 'mlj-jsp'
+    version =  buildNumber
 }
 
 dependencies {
